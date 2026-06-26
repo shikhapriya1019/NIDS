@@ -198,5 +198,4 @@ python run_pipeline.py --data-dir data/raw --cv-folds 5 --n-iter 20 --k-features
 
 ---
 
-Koi bhi error aaye — error message copy karke Claude ko bhejo!
-Main turant fix kar dunga.
+
