@@ -1,201 +1,349 @@
-# NIDS Supervised Pipeline — Step by Step Guide
-## Author: Shikha Priya | GH103517 | GISMA University
+# NIDS Supervised Pipeline — Step-by-Step Guide
+
+**Author:** Shikha Priya | **GH103517** | **GISMA University**
+
+## STEP 1 — DOWNLOAD THE ZIP FILE
+
+* Click the ZIP file link provided above to download it.
+* Save it on your Desktop.
+* Right-click the downloaded ZIP file and select **"Extract Here"** or **"Extract All"**.
+* The extracted folder will be named **`nids_project`**.
 
 ---
 
-# STEP 1 — ZIP DOWNLOAD KARO
+## STEP 2 — INSTALL PYTHON (If Not Already Installed)
 
-1. Upar ZIP file ka link hai — click karke download karo
-2. Apne Desktop pe save karo
-3. Right click → "Extract Here" ya "Extract All"
-4. Folder name hoga: nids_project
+* Open your browser and go to: https://www.python.org/downloads/
+* Click the **"Download Python 3.11"** button.
+* Install Python.
+* **IMPORTANT:** Make sure to check the **"Add Python to PATH"** checkbox during installation.
+* Wait for the installation to complete.
 
----
+### Verify Python Installation
 
-# STEP 2 — PYTHON INSTALL KARO (Agar nahi hai)
+1. Open **Command Prompt** (Windows) by searching for **cmd**.
+2. Type:
 
-1. Browser me jao: https://www.python.org/downloads/
-2. "Download Python 3.11" button click karo
-3. Install karo — IMPORTANT: "Add Python to PATH" checkbox ZAROOR tick karo
-4. Install complete hone do
+```bash
+python --version
+```
 
-Check karo Python install hua ya nahi:
-- Windows: Start → search "cmd" → Command Prompt kholo
-- Type karo:  python --version
-- Output aana chahiye:  Python 3.11.x
+You should see output similar to:
 
----
-
-# STEP 3 — FOLDER ME JAO
-
-Windows (Command Prompt me):
-    cd Desktop\nids_project
-
-Mac/Linux (Terminal me):
-    cd Desktop/nids_project
+```text
+Python 3.11.x
+```
 
 ---
 
-# STEP 4 — VIRTUAL ENVIRONMENT BANAO
+## STEP 3 — NAVIGATE TO THE PROJECT FOLDER
 
-Windows:
-    python -m venv nids_env
-    nids_env\Scripts\activate
+### Windows (Command Prompt)
 
-Mac/Linux:
-    python3 -m venv nids_env
-    source nids_env/bin/activate
+```bash
+cd Desktop\nids_project
+```
 
-Activate hone ke baad terminal me dikhega:
-    (nids_env) C:\Desktop\nids_project>
+### Mac/Linux (Terminal)
 
----
-
-# STEP 5 — PACKAGES INSTALL KARO
-
-    pip install -r requirements.txt
-
-Iske baad automatically install hoga:
-- scikit-learn
-- xgboost
-- pandas
-- numpy
-- matplotlib
-- seaborn
-- joblib
-
-2-3 minute lagenge. Internet chahiye.
+```bash
+cd Desktop/nids_project
+```
 
 ---
 
-# STEP 6 — PEHLE TEST KARO (Mock Data Se)
+## STEP 4 — CREATE A VIRTUAL ENVIRONMENT
 
-Real datasets ki zarurat nahi — pehle test karo:
+### Windows
 
-    python run_pipeline.py --generate-data
+```bash
+python -m venv nids_env
+nids_env\Scripts\activate
+```
 
-Yeh kya karega:
-✅ Mock data generate karega
-✅ Saare 6 models train karega
-✅ Cross-dataset evaluation karega
-✅ Plots banayega
-✅ metrics.json save karega
+### Mac/Linux
 
-Total time: 2-5 minute
+```bash
+python3 -m venv nids_env
+source nids_env/bin/activate
+```
 
----
+After activation, your terminal should display something like:
 
-# STEP 7 — REAL DATA SE CHALAO
-
-## Dataset Download Links:
-
-CICIDS2017:
-    https://www.unb.ca/cic/datasets/ids-2017.html
-
-UNSW-NB15:
-    https://research.unsw.edu.au/projects/unsw-nb15-dataset
-
-CSE-CIC-IDS2018:
-    https://www.unb.ca/cic/datasets/ids-2018.html
-
-## CSV Files Ko Rename Karo aur data/raw/ Me Rakho:
-
-    cicids2017_train.csv
-    cicids2017_test.csv
-    unswnb15_test.csv
-    cse_cic_ids2018_test.csv
-
-## Run Karo:
-
-    python run_pipeline.py --data-dir data/raw --skip-knn
+```text
+(nids_env) C:\Desktop\nids_project>
+```
 
 ---
 
-# STEP 8 — RESULTS DEKHO
+## STEP 5 — INSTALL REQUIRED PACKAGES
 
-Run hone ke baad yeh files ban jaati hain:
+Run:
 
-output/
-    metrics.json                 ← Saare numbers (F1, ROC-AUC, etc.)
-    plots/
-        roc_cicids2017.png       ← ROC curve
-        roc_unswnb15.png         ← ROC curve
-        roc_cse_cic_ids2018.png  ← ROC curve
-        pr_cicids2017.png        ← Precision-Recall curve
-        f1_comparison.png        ← Model comparison bar chart
-        pca_datasets.png         ← Dataset distribution
-        scores_*.png             ← Score distributions
-
----
-
-# STEP 9 — GITHUB PE UPLOAD KARO
-
-1. github.com → Login karo
-2. "New Repository" click karo
-3. Name: cross-dataset-nids-supervised
-4. Public select karo
-5. README add karo — UNCHECK karo
-6. "Create repository" click karo
-7. "uploading an existing file" click karo
-8. nids_project folder ki SAARI files drag & drop karo
-9. Commit message: Initial commit supervised NIDS pipeline
-10. "Commit changes" click karo
-
----
-
-# COMMON ERRORS AUR FIX:
-
-ERROR: ModuleNotFoundError: No module named 'xgboost'
-FIX:   pip install xgboost
-
-ERROR: ModuleNotFoundError: No module named 'sklearn'
-FIX:   pip install scikit-learn
-
-ERROR: FileNotFoundError: cicids2017_train.csv
-FIX:   CSV files data/raw/ folder me rakho
-
-ERROR: python not recognized
-FIX:   Python reinstall karo — "Add to PATH" tick karo
-
-ERROR: pip not recognized
-FIX:   python -m pip install -r requirements.txt
-
----
-
-# QUICK REFERENCE — ALL COMMANDS:
-
-# Virtual env activate
-nids_env\Scripts\activate          (Windows)
-source nids_env/bin/activate       (Mac/Linux)
-
-# Install
+```bash
 pip install -r requirements.txt
+```
 
-# Mock data test
+The following packages will be installed automatically:
+
+* scikit-learn
+* xgboost
+* pandas
+* numpy
+* matplotlib
+* seaborn
+* joblib
+
+This usually takes **2–3 minutes** and requires an internet connection.
+
+---
+
+## STEP 6 — TEST THE PIPELINE USING MOCK DATA
+
+Before using real datasets, test the pipeline with generated data.
+
+Run:
+
+```bash
 python run_pipeline.py --generate-data
+```
 
-# Real data (fast - no KNN)
+This will:
+
+* ✅ Generate mock data
+* ✅ Train all six supervised models
+* ✅ Perform cross-dataset evaluation
+* ✅ Generate plots
+* ✅ Save `metrics.json`
+
+Estimated runtime: **2–5 minutes**
+
+---
+
+## STEP 7 — RUN THE PIPELINE WITH REAL DATA
+
+### Download the Datasets
+
+**CICIDS2017**
+
+https://www.unb.ca/cic/datasets/ids-2017.html
+
+**UNSW-NB15**
+
+https://research.unsw.edu.au/projects/unsw-nb15-dataset
+
+**CSE-CIC-IDS2018**
+
+https://www.unb.ca/cic/datasets/ids-2018.html
+
+### Rename the CSV Files and Place Them in:
+
+```text
+data/raw/
+```
+
+Use the following filenames:
+
+```text
+cicids2017_train.csv
+cicids2017_test.csv
+unswnb15_test.csv
+cse_cic_ids2018_test.csv
+```
+
+Run the pipeline:
+
+```bash
 python run_pipeline.py --data-dir data/raw --skip-knn
+```
 
-# Real data (all models)
+---
+
+## STEP 8 — VIEW THE RESULTS
+
+After execution, the following files will be generated:
+
+```text
+output/
+    metrics.json                  ← Performance metrics (F1, ROC-AUC, etc.)
+
+plots/
+    roc_cicids2017.png            ← ROC Curve
+    roc_unswnb15.png              ← ROC Curve
+    roc_cse_cic_ids2018.png       ← ROC Curve
+    pr_cicids2017.png             ← Precision-Recall Curve
+    f1_comparison.png             ← Model comparison bar chart
+    pca_datasets.png              ← Dataset distribution (PCA)
+    scores_*.png                  ← Score distribution plots
+```
+
+---
+
+## STEP 9 — UPLOAD THE PROJECT TO GITHUB
+
+1. Log in to **github.com**.
+2. Click **"New Repository"**.
+3. Repository name:
+
+```text
+cross-dataset-nids-supervised
+```
+
+4. Select **Public**.
+5. **Do NOT** add a README (leave it unchecked).
+6. Click **"Create Repository"**.
+7. Select **"uploading an existing file"**.
+8. Drag and drop the entire **nids_project** folder contents.
+9. Commit message:
+
+```text
+Initial commit supervised NIDS pipeline
+```
+
+10. Click **"Commit changes"**.
+
+---
+
+# COMMON ERRORS AND FIXES
+
+### Error
+
+```text
+ModuleNotFoundError: No module named 'xgboost'
+```
+
+**Fix**
+
+```bash
+pip install xgboost
+```
+
+---
+
+### Error
+
+```text
+ModuleNotFoundError: No module named 'sklearn'
+```
+
+**Fix**
+
+```bash
+pip install scikit-learn
+```
+
+---
+
+### Error
+
+```text
+FileNotFoundError: cicids2017_train.csv
+```
+
+**Fix**
+
+Place the required CSV files inside the `data/raw/` folder.
+
+---
+
+### Error
+
+```text
+python is not recognized
+```
+
+**Fix**
+
+Reinstall Python and ensure that **"Add Python to PATH"** is checked during installation.
+
+---
+
+### Error
+
+```text
+pip is not recognized
+```
+
+**Fix**
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+---
+
+# QUICK REFERENCE — ALL COMMANDS
+
+## Activate Virtual Environment
+
+### Windows
+
+```bash
+nids_env\Scripts\activate
+```
+
+### Mac/Linux
+
+```bash
+source nids_env/bin/activate
+```
+
+---
+
+## Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Test with Mock Data
+
+```bash
+python run_pipeline.py --generate-data
+```
+
+---
+
+## Run with Real Data (Fast Mode — Skip KNN)
+
+```bash
+python run_pipeline.py --data-dir data/raw --skip-knn
+```
+
+---
+
+## Run with Real Data (All Models)
+
+```bash
 python run_pipeline.py --data-dir data/raw
+```
 
-# Custom settings
+---
+
+## Custom Configuration
+
+```bash
 python run_pipeline.py --data-dir data/raw --cv-folds 5 --n-iter 20 --k-features 20
+```
 
 ---
 
-# SUPERVISOR KE REQUIREMENTS — SAB COVER:
+# SUPERVISOR REQUIREMENTS — ALL COVERED
 
-✅ Supervised Learning        — 6 classifiers
-✅ Data Preprocessing         — cleaning, alignment, scaling
-✅ Feature Selection          — SelectKBest (top 20 features)
-✅ Cross-Validation           — Stratified 5-Fold CV
-✅ Hyperparameter Tuning      — GridSearchCV / RandomizedSearchCV
-✅ Performance Evaluation     — Precision, Recall, F1, ROC-AUC, PR-AUC, MCC
-✅ Cross-Dataset Testing      — UNSW-NB15 + CSE-CIC-IDS2018
-✅ Plots & Visualisation      — ROC, PR, F1 bar, PCA, score distribution
+✅ Supervised Learning — 6 classifiers
 
----
+✅ Data Preprocessing — Cleaning, alignment, and scaling
 
+✅ Feature Selection — SelectKBest (Top 20 features)
 
+✅ Cross-Validation — Stratified 5-Fold Cross Validation
+
+✅ Hyperparameter Tuning — GridSearchCV / RandomizedSearchCV
+
+✅ Performance Evaluation — Precision, Recall, F1-Score, ROC-AUC, PR-AUC, MCC
+
+✅ Cross-Dataset Testing — UNSW-NB15 and CSE-CIC-IDS2018
+
+✅ Plots & Visualization — ROC Curves, Precision-Recall Curves, F1 Comparison Bar Chart, PCA Visualization, and Score Distribution Plots
