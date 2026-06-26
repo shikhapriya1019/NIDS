@@ -1,0 +1,104 @@
+{
+  "cicids2017": {
+    "Random Forest": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "mcc": 1.0
+    },
+    "Decision Tree": {
+      "precision": 0.994,
+      "recall": 0.998,
+      "f1_score": 0.996,
+      "roc_auc": 0.9983,
+      "pr_auc": 0.9924,
+      "mcc": 0.995
+    },
+    "Logistic Regression": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "mcc": 1.0
+    },
+    "MLP Neural Network": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "mcc": 1.0
+    }
+  },
+  "unswnb15": {
+    "Random Forest": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "mcc": 1.0
+    },
+    "Decision Tree": {
+      "precision": 0.9743,
+      "recall": 0.986,
+      "f1_score": 0.9801,
+      "roc_auc": 0.9887,
+      "pr_auc": 0.9642,
+      "mcc": 0.9735
+    },
+    "Logistic Regression": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "mcc": 1.0
+    },
+    "MLP Neural Network": {
+      "precision": 1.0,
+      "recall": 0.999,
+      "f1_score": 0.9995,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "mcc": 0.9993
+    }
+  },
+  "cse_cic_ids2018": {
+    "Random Forest": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "mcc": 1.0
+    },
+    "Decision Tree": {
+      "precision": 0.9907,
+      "recall": 0.9933,
+      "f1_score": 0.992,
+      "roc_auc": 0.9943,
+      "pr_auc": 0.9863,
+      "mcc": 0.988
+    },
+    "Logistic Regression": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "mcc": 1.0
+    },
+    "MLP Neural Network": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "mcc": 1.0
+    }
+  }
+}
